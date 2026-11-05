@@ -45,7 +45,7 @@ export function ProductCardSkeleton() {
 export default function ProductCard({ product }) {
     return (
         <Link
-            href={`/products/${product.slug}`}
+            href={`/product/${product.slug}`}
             className="block rounded-2xl border border-gray-200 bg-[#fafcfa] p-4 shadow-sm transition hover:-translate-y-0.5 hover:shadow-md focus:outline-none focus-visible:ring-2 focus-visible:ring-[#058a40]"
         >
             <div className="flex items-center gap-3">
