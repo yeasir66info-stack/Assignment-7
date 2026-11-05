@@ -55,13 +55,13 @@ const Navbar = () => {
     const handleSignOut = async () => {
         setMenuOpen(false);
         await signOut();
-        toast.success('Signed out');
+        toast.success('সফলভাবে সাইন আউট হয়েছে!');
         router.push('/');
         router.refresh();
     };
 
     return (
-        <header className="bg-[#f8fbf8]">
+        <header className="sticky top-0 z-40 bg-[#f8fbf8]">
             <div className="mx-auto max-w-6xl px-4">
                 <div className="flex items-center justify-between py-3">
                     <Link href="/" className="flex items-center gap-3">
@@ -85,10 +85,13 @@ const Navbar = () => {
                                     aria-haspopup="menu"
                                     aria-expanded={menuOpen}
                                     className="flex cursor-pointer items-center gap-2 rounded-lg px-2 py-1 transition hover:bg-gray-100"
-                                >{user.image ? (
+                                >
+                                    {user.image ? (
                                         <img
                                             src={user.image}
                                             alt={user.name || 'Profile'}
+                                            referrerPolicy="no-referrer"
+                                            loading="lazy"
                                             className="h-8 w-8 rounded-full object-cover"
                                         />
                                     ) : (
@@ -113,11 +116,19 @@ const Navbar = () => {
                                             </p>
                                             <p className="truncate text-xs text-gray-500">{user.email}</p>
                                         </div>
+                                        <Link
+                                            href="/profile"
+                                            role="menuitem"
+                                            className="mt-1 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-sm text-gray-700 transition hover:bg-gray-100"
+                                        >
+                                            <span aria-hidden="true">👤</span>
+                                            প্রোফাইল
+                                        </Link>
                                         <button
                                             type="button"
                                             role="menuitem"
                                             onClick={handleSignOut}
-                                            className="mt-1 flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-600 transition hover:bg-red-50"
+                                            className="flex w-full cursor-pointer items-center gap-2 rounded-lg px-3 py-2 text-sm text-red-600 transition hover:bg-red-50"
                                         >
                                             <span aria-hidden="true">↩</span>
                                             সাইন আউট
@@ -153,11 +164,10 @@ const Navbar = () => {
                                     <Link
                                         href={cat.href}
                                         aria-current={active ? 'page' : undefined}
-                                        className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm transition ${
-                                            active
+                                        className={`flex items-center gap-1.5 rounded-full px-3.5 py-1.5 text-sm transition ${active
                                                 ? 'bg-[#058a40] font-semibold text-white shadow-sm'
                                                 : 'text-gray-700 hover:bg-gray-100'
-                                        }`}
+                                            }`}
                                     >
                                         <span aria-hidden="true">{cat.emoji}</span>
                                         {cat.name}
