@@ -6,16 +6,15 @@ import toast from 'react-hot-toast';
 import { useSession, signOut } from '@/lib/auth-client';
 import PriceTicker from './PriceTicker';
 
-// href gulo tomar asol route onujayi change koro
 const categories = [
-    { name: 'চাল', emoji: '🍚', href: '/category/rice' },
+    { name: 'চাল', emoji: '🍚', href: '/category/chal' },
     { name: 'ডাল', emoji: '🫘', href: '/category/dal' },
-    { name: 'তেল', emoji: '🛢️', href: '/category/oil' },
-    { name: 'সবজি', emoji: '🥬', href: '/category/vegetables' },
-    { name: 'মাছ', emoji: '🐟', href: '/category/fish' },
-    { name: 'মাংস', emoji: '🥩', href: '/category/meat' },
-    { name: 'ডিম-দুধ', emoji: '🥚', href: '/category/egg-milk' },
-    { name: 'মসলা', emoji: '🌶️', href: '/category/spices' },
+    { name: 'তেল', emoji: '🛢️', href: '/category/tel' },
+    { name: 'সবজি', emoji: '🥬', href: '/category/sobji' },
+    { name: 'মাছ', emoji: '🐟', href: '/category/mach' },
+    { name: 'মাংস', emoji: '🍗', href: '/category/mangsho' },
+    { name: 'ডিম-দুধ', emoji: '🥛', href: '/category/dim-dui' },
+    { name: 'মসলা', emoji: '🌶️', href: '/category/mosla' },
 ];
 
 const Navbar = () => {
@@ -27,7 +26,6 @@ const Navbar = () => {
     const [dateText, setDateText] = useState('');
     const menuRef = useRef(null);
 
-    // Bangla date (client e set kora hocche jate server/client er majhe hydration mismatch na hoy)
     useEffect(() => {
         const formatted = new Date().toLocaleDateString('bn-BD', {
             weekday: 'long',
@@ -51,8 +49,6 @@ const Navbar = () => {
     useEffect(() => {
         setMenuOpen(false);
     }, [pathname]);
-
-    if (pathname === '/signin' || pathname === '/signup') return null;
 
     const user = session?.user;
 
