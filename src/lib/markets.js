@@ -7,6 +7,8 @@ const MARKETS = [
     { name: 'জিন্দাবাজার', division: 'সিলেট' },
     { name: 'রূপাতলী বাজার', division: 'বরিশাল' },
     { name: 'গঞ্জ বাজার', division: 'রংপুর' },
+    { name: "চৌর বাজার", division: 'ময়মনসিংহ' },
+    { name: "চৌরাস্তা বাজার", division: 'সিলেট' },
 ];
 
 function seed(str) {
